@@ -148,3 +148,32 @@ def test_aligned_frame_restricts_rows_to_where_the_universe_exists():
     partial = df.aligned_frame({"A": a, "B": b}, field="close", min_coverage=1.0)
     assert partial.index.min() >= pd.Timestamp("2017-01-01")
     assert len(partial) < len(a)
+
+
+# --------------------------------------------------------------------------- #
+# the CLI: what `make data` actually runs
+# --------------------------------------------------------------------------- #
+def test_cli_synthetic_fetch_writes_a_flagged_file(tmp_path):
+    """`python -m kit.data_fetcher fetch SPY --provider synthetic` must work and must flag the file.
+
+    Regression: the CLI used to forward the provider without the explicit
+    allow_synthetic opt-in, so the documented offline command could never succeed.
+    """
+    import subprocess
+
+    repo_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    env = dict(os.environ, PYTRADES_DATA=str(tmp_path))
+    proc = subprocess.run(
+        [sys.executable, "-m", "kit.data_fetcher", "fetch", "SYN", "--provider", "synthetic"],
+        cwd=repo_root,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert (tmp_path / "SYN.csv").exists()
+    meta = df.read_meta("SYN", str(tmp_path))
+    assert meta.get("synthetic") is True
+    loaded = df.load("SYN", str(tmp_path))
+    with pytest.raises(ValueError):
+        df.assert_not_synthetic(loaded, "SYN")

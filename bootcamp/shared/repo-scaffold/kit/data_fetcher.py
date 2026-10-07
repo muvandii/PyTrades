@@ -464,13 +464,14 @@ def fetch_many(
     provider: str = "auto",
     data_dir: str = DEFAULT_DATA_DIR,
     refresh: bool = False,
+    allow_synthetic: bool = False,
 ) -> Dict[str, pd.DataFrame]:
     """Fetch a universe. Failures are reported, not hidden - partial universes lie."""
     frames: Dict[str, pd.DataFrame] = {}
     failures: List[str] = []
     for symbol in symbols:
         try:
-            frames[symbol] = fetch(symbol, start, end, provider, data_dir, refresh)
+            frames[symbol] = fetch(symbol, start, end, provider, data_dir, refresh, allow_synthetic)
         except Exception as exc:  # noqa: BLE001
             failures.append("%s: %s" % (symbol, exc))
     if failures:
@@ -540,7 +541,14 @@ def _main(argv: Optional[Sequence[str]] = None) -> int:
 
     if args.command == "fetch":
         symbols = list(args.symbols) + (universe(args.universe) if args.universe else [])
-        frames = fetch_many(symbols, args.start, args.end, args.provider, refresh=args.refresh)
+        frames = fetch_many(
+            symbols,
+            args.start,
+            args.end,
+            args.provider,
+            refresh=args.refresh,
+            allow_synthetic=(args.provider == "synthetic"),
+        )
         print(coverage_table(frames).to_string(index=False) if frames else "nothing fetched")
         return 0 if frames else 1
 

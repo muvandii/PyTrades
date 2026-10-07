@@ -54,6 +54,24 @@ engine: `make run E=engine.backtest`. Your engine must pass
 `tests/test_spine_contract.py` (copied from the course's look-ahead suite) before
 the Week 4 gate will pass.
 
+## No network? Work offline, honestly
+
+Market endpoints are sometimes unreachable (firewalls, rate limits, a flight). The
+course never blocks on that, but it also never lets you mistake synthetic bars for
+evidence:
+
+```bash
+python -m kit.data_fetcher smoke                                  # offline smoke test, writes nothing
+python -m kit.data_fetcher fetch SPY --provider synthetic         # explicit synthetic bars (flagged)
+python -m kit.data_fetcher validate SPY                           # shows the SYNTHETIC tag
+make validate                                                     # every cached file, with sources
+```
+
+Synthetic data is flagged in `data/<SYM>.meta.json`, `assert_not_synthetic()` refuses
+it in a graded run, and the course's own laboratory series live in
+`shared/sample-data/` (see the LAB_*.csv files: they exist to teach mechanics, and
+`truth.json` is the answer key - read it only after writing your verdict).
+
 ## The four contracts (do not break these)
 
 | Contract | Path | Producer |
