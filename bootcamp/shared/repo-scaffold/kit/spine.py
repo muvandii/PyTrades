@@ -140,6 +140,11 @@ def load_spec(spec: Any, config_dir: str = CONFIG_DIR) -> StrategySpec:
     with open(path, "r", encoding="utf-8") as fh:
         payload = json.load(fh)
     payload.setdefault("name", payload.get("id", "unnamed"))
+    if not str(payload.get("thesis", "")).strip():
+        raise ValueError(
+            "%s has no thesis: a spec without a mechanism sentence is a hope, not an experiment "
+            "(see shared/templates/strategy-config-schema.md)" % path
+        )
     return StrategySpec(**payload)
 
 
@@ -147,13 +152,18 @@ def list_specs(config_dir: str = CONFIG_DIR) -> List[StrategySpec]:
     if not os.path.isdir(config_dir):
         return []
     specs: List[StrategySpec] = []
+    broken: List[str] = []
     for name in sorted(os.listdir(config_dir)):
         if not name.endswith(".json"):
             continue
+        path = os.path.join(config_dir, name)
         try:
-            specs.append(load_spec(name, config_dir))
-        except TypeError as exc:
+            specs.append(load_spec(path))
+        except Exception as exc:  # noqa: BLE001 - a bad spec must not hide the good ones
+            broken.append(name)
             print("skipping %s: %s" % (name, exc), file=sys.stderr)
+    if broken:
+        print("%d spec file(s) could not be loaded: %s" % (len(broken), ", ".join(broken)), file=sys.stderr)
     return specs
 
 

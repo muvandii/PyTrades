@@ -407,6 +407,7 @@ bootcamp/
 │   │   │   ├── tests/
 │   │   │   │   ├── test_data_fetcher.py
 │   │   │   │   ├── test_metrics.py
+│   │   │   │   ├── test_spine_cli.py
 │   │   │   │   └── test_spine_contract.py
 │   │   │   ├── README.md
 │   │   │   ├── __init__.py
