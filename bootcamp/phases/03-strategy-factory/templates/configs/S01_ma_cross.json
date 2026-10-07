@@ -1,0 +1,11 @@
+{
+  "id": "S01_ma_cross",
+  "name": "MA cross 50/200 on SPY",
+  "universe": ["SPY"],
+  "params": {"fast": 50, "slow": 200},
+  "thesis": "Slow capital keeps buying after prices rise; the cross is a crude proxy for a change in the average participant's position.",
+  "tags": ["trend", "tier2"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

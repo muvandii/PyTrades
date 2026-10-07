@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PyTrades strategy spec",
+  "type": "object",
+  "required": ["id", "name", "universe", "params"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_]+$"},
+    "name": {"type": "string", "minLength": 3},
+    "universe": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "params": {"type": "object"},
+    "thesis": {"type": "string"},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "long_only": {"type": "boolean", "default": true},
+    "signal_file": {"type": "string", "default": "signal.py"},
+    "max_gross_exposure": {"type": "number", "exclusiveMinimum": 0, "maximum": 5, "default": 1.0},
+    "rebalance": {"type": "string", "enum": ["daily", "weekly", "monthly"], "default": "daily"}
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_warning": "SIMULATED DATA. Properties below are planted. Never cite these as market evidence.",
+  "seed": 20260101,
+  "sample": {
+    "start": "2010-01-01",
+    "bars": 2600,
+    "frequency": "business daily"
+  },
+  "series": {
+    "LAB_TREND": {
+      "planted": "120-day drift regimes of +9/-7/+4 bps per day, plus 0.18 lag-1 autocorrelation in returns",
+      "expected": "trend/momentum family (MA cross, Donchian) should show a positive edge out-of-sample; mean reversion should fail",
+      "good_for": "Week 3-6 trend strategies, look-ahead demos (the edge is strong enough that a shift bug is obvious)"
+    },
+    "LAB_RANDOM": {
+      "planted": "pure random walk with +6 bps/day drift, no autocorrelation",
+      "expected": "buy-and-hold beats every rule; any rule that beats it must be luck - use it to calibrate what luck looks like",
+      "good_for": "Week 1 baselines, Week 6 bootstrap, Week 2 debunk practice (a '94% win rate' rule can be built on it trivially)"
+    },
+    "LAB_MR": {
+      "planted": "Ornstein-Uhlenbeck spread, half-life about 28 bars, around a slow random trend",
+      "expected": "mean-reversion family: gross Sharpe approx 0.9, breakeven near 20 bps round-trip - a cost-cliff lab, not a money printer",
+      "good_for": "Week 5 RSI/Bollinger, cost-death autopsy (the exact headline of several graveyard entries)"
+    },
+    "LAB_PAIR_A": {
+      "planted": "common stochastic trend; partner B = 1.3 x A + OU spread, half-life approx 17 bars",
+      "expected": "cointegration tests pass in-sample; the spread trade works for 80% of the sample",
+      "good_for": "Week 6 and Week 8 pairs work"
+    },
+    "LAB_PAIR_B": {
+      "planted": "same as A until bar 2080, then a slow structural break (+15 bps/day drift)",
+      "expected": "cointegration FAILS on the full sample but PASSES in-sample; the pair trade dies in the last 20%",
+      "good_for": "teaching that cointegration is a property of a period, not of a pair (Week 8 lesson, C18)"
+    },
+    "LAB_VOL": {
+      "planted": "volatility clusters with jumps to 2.6x, and mean returns fall as vol rises",
+      "expected": "vol targeting (scale exposure by 1/realised vol) improves risk-adjusted returns versus fixed exposure",
+      "good_for": "Week 7 TSMOM replication, Week 10 vol targeting and Monte Carlo"
+    }
+  },
+  "hints": {
+    "data_validation": "LAB_VOL was written with a deliberately empty 'realised_vol' column - your validator should flag it, and you must delete the column before use",
+    "cost_trap": "LAB_MR is the cost trap: gross Sharpe 0.85 becomes 0.43 at 10 bps and zero at 20 bps - the classic graveyard shape",
+    "break_point_bar": 2080
+  }
+}

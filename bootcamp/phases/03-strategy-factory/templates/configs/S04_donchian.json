@@ -1,0 +1,11 @@
+{
+  "id": "S04_donchian",
+  "name": "Donchian 20/10 breakout on ETF basket",
+  "universe": ["SPY", "QQQ", "IWM", "GLD"],
+  "params": {"entry": 20, "exit": 10},
+  "thesis": "New N-day highs mark persistent flow (rebalancing, trend funds, retail momentum) that continues for days to weeks.",
+  "tags": ["trend", "tier2"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

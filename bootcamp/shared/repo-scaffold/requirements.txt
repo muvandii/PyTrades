@@ -1,0 +1,11 @@
+# Core: enough for Weeks 1-10
+pandas>=2.0
+numpy>=1.24
+pytest>=7.4
+matplotlib>=3.7          # charts in tearsheets and journal figures
+
+# Optional, per phase. Uncomment when a week demands it.
+# scipy>=1.11            # Week 6: t-tests, Week 8: cointegration ADF test
+# statsmodels>=0.14      # Week 8: cointegration / half-life regressions
+# alpaca-py>=0.20        # Week 11-12: paper trading (US equities)
+# ccxt>=4.2              # Week 11-12: paper trading (crypto venues)
