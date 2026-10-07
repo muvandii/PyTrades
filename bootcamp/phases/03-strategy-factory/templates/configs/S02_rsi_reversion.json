@@ -1,0 +1,11 @@
+{
+  "id": "S02_rsi_reversion",
+  "name": "RSI(2) reversion on SPY",
+  "universe": ["SPY"],
+  "params": {"period": 2, "entry": 10.0, "exit": 60.0},
+  "thesis": "Short-term oversold readings in a liquid index ETF are partly impatient flow that reverses within days.",
+  "tags": ["reversion", "tier2"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

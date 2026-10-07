@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.DS_Store
+
+# Data and artifacts: keep the CSVs you use for verdicts, ignore bulk
+data/*.tmp
+reports/backtests/*/*.png
+reports/figures/generated/
+live/credentials.json
+live/*.log
+
+# Keep these: they are your evidence
+!graveyard.md
+!reports/**/*.md

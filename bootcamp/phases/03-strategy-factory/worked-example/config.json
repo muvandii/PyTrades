@@ -1,0 +1,11 @@
+{
+  "id": "S03_worked",
+  "name": "Bollinger z-score reversion, tight threshold (worked example)",
+  "universe": ["LAB_MR"],
+  "params": {"window": 5, "entry_z": -1.0, "exit_z": 0.5, "allow_short": false},
+  "thesis": "Price deviations from a short-window mean in a mean-reverting instrument partly revert, because most flow is liquidity-driven rather than information-driven.",
+  "tags": ["reversion", "worked-example", "lab-data"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

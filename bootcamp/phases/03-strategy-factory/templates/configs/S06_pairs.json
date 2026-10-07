@@ -1,0 +1,11 @@
+{
+  "id": "S06_pairs",
+  "name": "Pairs trading KO/PEP on a rolling hedge ratio",
+  "universe": ["KO", "PEP"],
+  "params": {"window": 60, "entry_z": 2.0, "exit_z": 0.5},
+  "thesis": "Two consumer-staples peers share a common factor; spread deviations are liquidity events that revert over days.",
+  "tags": ["pairs", "relative-value", "tier3"],
+  "long_only": false,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

@@ -1,0 +1,764 @@
+{
+  "_comment": "Generated from bootcamp/registry.json by bootcamp/tools/sync_gates.py - do not edit by hand.",
+  "course": "AI Trading Strategy Bootcamp",
+  "generated_from": "registry.json",
+  "weeks": {
+    "1": {
+      "title": "Raw Prices Are Not Data",
+      "phase": "P1",
+      "deliverables": [
+        "D01",
+        "D02"
+      ],
+      "milestone": null,
+      "checkpoint": "`make data && make validate` runs clean from a fresh clone; reports/measurement-lab.md contains an equity curve and an expectancy table computed from validated data.",
+      "graveyard_prompt": "Add to the graveyard. Log the first death: the naive 'always long' and 'random entry' baselines. Cause of death is usually 'no edge, no thesis' - write it down anyway, because baseline autopsies are what future you compares against.",
+      "checks": [
+        {
+          "id": "G1.1",
+          "glob": "data/*.csv",
+          "min": 5,
+          "desc": "5+ instruments cached as CSVs",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G1.2",
+          "path": "reports/data-validation.md",
+          "desc": "Data validation report",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G1.3",
+          "path": "reports/measurement-lab.md",
+          "desc": "Measurement lab report with equity curve + expectancy table",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G1.4",
+          "path": "reports/measurement-lab.md",
+          "pattern": "expectancy",
+          "min_matches": 1,
+          "desc": "Expectancy computed, not just described",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G1.5",
+          "min": 5,
+          "week": 1,
+          "desc": "Journal entries for week 1",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G1.6",
+          "cmd": "python tools/check_gate.py --week 1 --self-test",
+          "expect_exit": 0,
+          "desc": "Scaffold self-test runs",
+          "type": "command",
+          "auto": true
+        },
+        {
+          "id": "G1.7",
+          "desc": "You can explain compounding and expectancy in 2 sentences each and spot the wrong version in kit/spot_it_wrong.py",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "2": {
+      "title": "Kill Three Viral Strategies",
+      "phase": "P1",
+      "deliverables": [
+        "D03",
+        "D04"
+      ],
+      "milestone": "M1",
+      "checkpoint": "Milestone M1: a timed, unassisted 30-minute debunk, start to written verdict, with the timer log kept in the report.",
+      "graveyard_prompt": "Expect all three to die. The graveyard entry matters more than the debunk: name the exact mechanism (look-ahead, cost denial, repainting indicator, survivorship, sample size).",
+      "checks": [
+        {
+          "id": "G2.1",
+          "glob": "reports/debunks/debunk-*.md",
+          "min": 3,
+          "desc": "3 debunk writeups",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G2.2",
+          "path": "reports/debunks/debunk-01.md",
+          "pattern": "elapsed|minutes|timer",
+          "min_matches": 1,
+          "desc": "Debunk #1 is timed",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G2.3",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 3,
+          "desc": "3+ graveyard entries",
+          "type": "file_contains_section",
+          "auto": true
+        },
+        {
+          "id": "G2.4",
+          "min": 5,
+          "week": 2,
+          "desc": "Journal entries for week 2",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G2.5",
+          "desc": "M1: you have demonstrably debunked a fresh viral claim in 30 timed minutes",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "3": {
+      "title": "Build the Accounting Machine",
+      "phase": "P2",
+      "deliverables": [
+        "D05",
+        "D06"
+      ],
+      "milestone": null,
+      "checkpoint": "Your engine passes the 8 engine unit tests and the time-travel test (positions up to T are identical whether or not future data exists), and reproduces buy-and-hold within 1% of the raw price return on SPY.",
+      "graveyard_prompt": "Graveyard prompt: Your first engine will be wrong in a way you cannot see yet. Keep the broken version's equity curve; it is the exhibit for the concept on look-ahead you will write later.",
+      "checks": [
+        {
+          "id": "G3.1",
+          "path": "engine/backtest.py",
+          "desc": "Your backtester exists",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G3.2",
+          "cmd": "python -m pytest tests -q",
+          "expect_exit": 0,
+          "desc": "All engine unit tests pass",
+          "type": "command",
+          "auto": true
+        },
+        {
+          "id": "G3.3",
+          "path": "reports/cost-sensitivity.md",
+          "desc": "Cost sensitivity report",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G3.4",
+          "path": "engine/costs.py",
+          "desc": "Cost model wired into the engine",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G3.5",
+          "path": "engine/README.md",
+          "desc": "Engine documented",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G3.6",
+          "min": 5,
+          "week": 3,
+          "desc": "Journal entries for week 3",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G3.7",
+          "desc": "Buy-and-hold reproduction within 1% and the time-travel test passes",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "4": {
+      "title": "Costs, OOS, Tearsheets",
+      "phase": "P2",
+      "deliverables": [
+        "D07"
+      ],
+      "milestone": "M2",
+      "checkpoint": "Milestone M2: hand yourself a fresh idea you have never tested and go from raw data to tearsheet + verdict in under 30 minutes, timed.",
+      "graveyard_prompt": "Graveyard prompt: Expect at least one strategy to die the moment costs are switched on. Record the breakeven cost (bps round-trip) at which it dies; that number is the strategy's real personality.",
+      "checks": [
+        {
+          "id": "G4.1",
+          "path": "engine/walkforward.py",
+          "desc": "Walk-forward / OOS runner",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G4.2",
+          "path": "tests/test_lookahead.py",
+          "desc": "Look-ahead test suite in place",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G4.3",
+          "cmd": "python -m pytest tests -q",
+          "expect_exit": 0,
+          "desc": "Engine + look-ahead tests green",
+          "type": "command",
+          "auto": true
+        },
+        {
+          "id": "G4.4",
+          "glob": "strategies/*/tearsheet.md",
+          "min": 3,
+          "desc": "Tearsheets for 3 strategies",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G4.5",
+          "path": "engine/README.md",
+          "pattern": "out-of-sample|OOS|walk-forward",
+          "min_matches": 1,
+          "desc": "OOS documented",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G4.6",
+          "min": 5,
+          "week": 4,
+          "desc": "Journal entries for week 4",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G4.7",
+          "desc": "M2: timed end-to-end run of a fresh idea in under 30 minutes",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "5": {
+      "title": "The Factory Floor",
+      "phase": "P3",
+      "deliverables": [
+        "D08",
+        "D09"
+      ],
+      "milestone": null,
+      "checkpoint": "Three strategies with tearsheets, three verdicts, a populated strategies/index.md, and at least two graveyard entries; also start the live paper clock (D0) - the 30 days must run while you work.",
+      "graveyard_prompt": "Graveyard prompt: Expect the momentum/trend family to survive parameters but die on costs, and mean reversion to do the opposite. Log both mechanisms separately.",
+      "checks": [
+        {
+          "id": "G5.1",
+          "glob": "strategies/S0[123]_*/verdict.md",
+          "min": 3,
+          "desc": "3 verdicts",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G5.2",
+          "path": "strategies/index.md",
+          "desc": "Strategy registry",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G5.3",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 2,
+          "desc": "2+ graveyard entries",
+          "type": "file_contains_section",
+          "auto": true
+        },
+        {
+          "id": "G5.4",
+          "path": "live/config.json",
+          "desc": "Live paper clock started (config committed in Week 5, run in Week 11-12)",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G5.5",
+          "min": 5,
+          "week": 5,
+          "desc": "Journal entries for week 5",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G5.6",
+          "desc": "Each verdict names the mechanism of death or survival in one sentence",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "6": {
+      "title": "Six Strategies and an Honest Mirror",
+      "phase": "P3",
+      "deliverables": [
+        "D10",
+        "D11"
+      ],
+      "milestone": "M3",
+      "checkpoint": "Milestone M3: 6 strategies tested, 3+ in the graveyard, at least one survivor whose OOS Sharpe sits inside a bootstrap CI that excludes zero.",
+      "graveyard_prompt": "The parameter heatmap is a graveyard map: log every parameter neighbourhood where the edge evaporated and name the shape (single spike vs plateau).",
+      "checks": [
+        {
+          "id": "G6.1",
+          "glob": "strategies/*/verdict.md",
+          "min": 6,
+          "desc": "6 strategy verdicts",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G6.2",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 3,
+          "desc": "3+ graveyard entries",
+          "type": "file_contains_section",
+          "auto": true
+        },
+        {
+          "id": "G6.3",
+          "path": "reports/overfitting-audit.md",
+          "desc": "Overfitting audit",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G6.4",
+          "glob": "reports/sensitivity/*.csv",
+          "min": 2,
+          "desc": "Sensitivity heatmap data",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G6.5",
+          "path": "reports/bootstrap.md",
+          "pattern": "confidence|CI|percentile",
+          "min_matches": 1,
+          "desc": "Bootstrap CI computed",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G6.6",
+          "min": 5,
+          "week": 6,
+          "desc": "Journal entries for week 6",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G6.7",
+          "desc": "M3: at least one survivor whose OOS bootstrap CI excludes zero",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "7": {
+      "title": "Replicate a Paper: Time-Series Momentum",
+      "phase": "P4",
+      "deliverables": [
+        "D12"
+      ],
+      "milestone": null,
+      "checkpoint": "papers/R1_tsmom/comparison.md shows your Sharpe and the paper's Sharpe side by side, with every gap traced to a named deviation (universe, period, vol scaling, costs).",
+      "graveyard_prompt": "Graveyard prompt: Replications die too. If TSMOM fails on your universe/period, that is a finding: log it with the deviation that explains it.",
+      "checks": [
+        {
+          "id": "G7.1",
+          "path": "papers/R1_tsmom/impl.py",
+          "desc": "TSMOM implementation",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G7.2",
+          "path": "papers/R1_tsmom/comparison.md",
+          "desc": "Results-vs-claims comparison",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G7.3",
+          "path": "papers/R1_tsmom/deviations.md",
+          "desc": "Deviation log",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G7.4",
+          "min": 5,
+          "week": 7,
+          "desc": "Journal entries for week 7",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G7.5",
+          "desc": "Every gap to the paper is traced to a named deviation",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "8": {
+      "title": "Replicate a Paper: Pairs Trading",
+      "phase": "P4",
+      "deliverables": [
+        "D13"
+      ],
+      "milestone": null,
+      "checkpoint": "papers/R2_pairs/comparison.md includes the cointegration test output, the chosen pair(s), spread z-score rules, and a walk-forward run where the pair was selected only on training data.",
+      "graveyard_prompt": "Graveyard prompt: Half your candidate pairs will fail the cointegration test in the OOS window. Log the failures as evidence that selection-on-full-sample is a look-ahead machine.",
+      "checks": [
+        {
+          "id": "G8.1",
+          "path": "papers/R2_pairs/impl.py",
+          "desc": "Pairs implementation",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G8.2",
+          "path": "papers/R2_pairs/comparison.md",
+          "pattern": "coint|ADF|half-life|z-score",
+          "min_matches": 1,
+          "desc": "Cointegration evidence in the writeup",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G8.3",
+          "path": "papers/R2_pairs/deviations.md",
+          "desc": "Deviation log",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G8.4",
+          "min": 5,
+          "week": 8,
+          "desc": "Journal entries for week 8",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G8.5",
+          "desc": "Pair selection happened on training data only",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "9": {
+      "title": "Replicate a Paper: Vol-Managed Portfolios",
+      "phase": "P4",
+      "deliverables": [
+        "D14"
+      ],
+      "milestone": "M4",
+      "checkpoint": "Milestone M4: 2-3 replications shipped, each with comparison.md + deviations.md, plus papers/synthesis.md answering 'what replicated, what did not, and why'.",
+      "graveyard_prompt": "Graveyard prompt: If the paper's Sharpe does not survive your costs and period, the paper is not wrong - you were not trading the paper's asset. Log the gap, not a verdict on the authors.",
+      "checks": [
+        {
+          "id": "G9.1",
+          "path": "papers/R3_volmanaged/impl.py",
+          "desc": "Vol-managed implementation",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G9.2",
+          "glob": "papers/R*/comparison.md",
+          "min": 3,
+          "desc": "3 replications compared",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G9.3",
+          "path": "papers/synthesis.md",
+          "desc": "Cross-paper synthesis",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G9.4",
+          "min": 5,
+          "week": 9,
+          "desc": "Journal entries for week 9",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G9.5",
+          "phase": "P4",
+          "desc": "Phase 4 retro written (3 questions) - see shared/retro-template.md",
+          "type": "retro",
+          "auto": true
+        },
+        {
+          "id": "G9.6",
+          "desc": "M4 passed",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "10": {
+      "title": "Sizing, Correlation, Survival",
+      "phase": "P5",
+      "deliverables": [
+        "D15"
+      ],
+      "milestone": null,
+      "checkpoint": "reports/risk-policy.md states sizing rules in one page; the portfolio allocation beats equal-weight on the same signals, and Monte Carlo shows your ruin probability under your own rules.",
+      "graveyard_prompt": "Graveyard prompt: Log the sizing rules that died: full Kelly on a fat-tailed strategy, correlation-blind diversification, vol target set so high that stops become structure.",
+      "checks": [
+        {
+          "id": "G10.1",
+          "path": "reports/risk-policy.md",
+          "desc": "Written risk policy",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G10.2",
+          "path": "reports/portfolio-allocation.md",
+          "desc": "Portfolio allocation",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G10.3",
+          "path": "reports/monte-carlo.md",
+          "desc": "Monte Carlo survival analysis",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G10.4",
+          "path": "reports/regime-lab.md",
+          "desc": "Regime filter lab",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G10.5",
+          "glob": "reports/sensitivity/*.csv",
+          "min": 3,
+          "desc": "Sizing sensitivity data",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G10.6",
+          "min": 5,
+          "week": 10,
+          "desc": "Journal entries for week 10",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G10.7",
+          "desc": "Ruin probability under your own rules is computed, not assumed",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "11": {
+      "title": "Go Live (Paper)",
+      "phase": "P6",
+      "deliverables": [
+        "D16"
+      ],
+      "milestone": null,
+      "checkpoint": "The bot runs unattended for 7 consecutive days: signals generated, orders submitted or explicitly skipped, every day logged, dashboard rebuilt - and it has been running longer than that because you started the clock in Week 5.",
+      "graveyard_prompt": "Graveyard prompt: Log every operational death: missed bar, stale data, broker timeout, double order, timezone bug. Ops bugs are strategies' leading cause of death.",
+      "checks": [
+        {
+          "id": "G11.1",
+          "path": "live/bot.py",
+          "desc": "Live bot",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G11.2",
+          "glob": "live/log/*.json",
+          "min": 7,
+          "desc": "7+ consecutive daily logs",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G11.3",
+          "path": "live/dashboard.html",
+          "desc": "Reconciliation dashboard",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G11.4",
+          "min": 5,
+          "week": 11,
+          "desc": "Journal entries for week 11",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G11.5",
+          "desc": "The bot ran unattended: no manual order edits in the log window",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "12": {
+      "title": "Reconcile Reality",
+      "phase": "P6",
+      "deliverables": [
+        "D17"
+      ],
+      "milestone": "M5",
+      "checkpoint": "Milestone M5: 30+ days of live logs, a reconciliation report that attributes divergence to fees/slippage/timing/missed fills/regime, and a written expected-divergence budget for next month.",
+      "graveyard_prompt": "Graveyard prompt: Any live rule you silently changed mid-run gets logged as a killed variant. Undisclosed mid-course edits are the most common way students cheat themselves.",
+      "checks": [
+        {
+          "id": "G12.1",
+          "path": "live/equity.csv",
+          "min": 30,
+          "desc": "30+ days of live equity",
+          "type": "csv_rows_min",
+          "auto": true
+        },
+        {
+          "id": "G12.2",
+          "path": "live/reconciliation.md",
+          "desc": "Reconciliation report",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G12.3",
+          "path": "live/reconciliation.md",
+          "pattern": "slippage|fees|timing|missed",
+          "min_matches": 2,
+          "desc": "Divergence attributed to named components",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G12.4",
+          "path": "live/postmortem.md",
+          "desc": "Divergence post-mortem",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G12.5",
+          "min": 5,
+          "week": 12,
+          "desc": "Journal entries for week 12",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G12.6",
+          "desc": "M5 passed",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    },
+    "13": {
+      "title": "Ship It in Public",
+      "phase": "P7",
+      "deliverables": [
+        "D18"
+      ],
+      "milestone": "M6",
+      "checkpoint": "Milestone M6: the stranger-clone test - a fresh clone plus a documented 15 minutes gets someone from README.md to a reproduced tearsheet; recall test passed (explain 3 concepts from memory, code 1 from scratch).",
+      "graveyard_prompt": "Close the graveyard with a taxonomy: cluster all deaths into 3-5 causes and rank them. That ranked list is the most valuable artifact you built this quarter.",
+      "checks": [
+        {
+          "id": "G13.1",
+          "glob": "strategies/*/verdict.md",
+          "min": 15,
+          "desc": "15+ tested strategies with verdicts",
+          "type": "files_min",
+          "auto": true
+        },
+        {
+          "id": "G13.2",
+          "path": "WRITEUP.md",
+          "desc": "Public writeup",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G13.3",
+          "path": "WRITEUP.md",
+          "pattern": "http",
+          "min_matches": 1,
+          "desc": "Writeup is published (links to the public artifact)",
+          "type": "pattern_in_file",
+          "auto": true
+        },
+        {
+          "id": "G13.4",
+          "path": "PORTFOLIO.md",
+          "desc": "Portfolio document",
+          "type": "file_exists",
+          "auto": true
+        },
+        {
+          "id": "G13.5",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 5,
+          "desc": "Graveyard taxonomy with 5+ entries",
+          "type": "file_contains_section",
+          "auto": true
+        },
+        {
+          "id": "G13.6",
+          "min": 80,
+          "week": 0,
+          "desc": "80+ journal entries across the course",
+          "type": "journal_min",
+          "auto": true
+        },
+        {
+          "id": "G13.7",
+          "desc": "Stranger-clone test passed + recall test (3 concepts explained, 1 coded from scratch)",
+          "type": "manual",
+          "auto": false
+        }
+      ]
+    }
+  }
+}

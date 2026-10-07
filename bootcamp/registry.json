@@ -1,0 +1,1680 @@
+{
+  "course": {
+    "name": "AI Trading Strategy Bootcamp",
+    "tagline": "From 'knows pandas' to 'shipped 15+ tested strategies + live paper trading' in 13 weeks.",
+    "weeks": 13,
+    "phases": 7,
+    "deliverables": 18,
+    "concepts": 25,
+    "milestones": 6,
+    "capstones": 1,
+    "prerequisites": "Solid pandas, basic Python. No finance, no math beyond high-school algebra.",
+    "time_per_week": "10-20 hours (2-4 hrs/day, 5-6 days/week)",
+    "format": "self-paced, project-based, solo-completable",
+    "loop": "PICK -> BUILD -> BACKTEST -> BREAK -> DIAGNOSE -> LEARN CONCEPT -> REBUILD -> VERDICT -> LOG",
+    "principles": [
+      "Build first, theory second",
+      "Just-in-time concepts: no math before a deliverable demands it",
+      "Every deliverable teaches exactly one thing",
+      "Failure is graded: the graveyard is a required artifact",
+      "Ship or don't advance: every week has a gate",
+      "Costs, OOS and verdicts are non-negotiable",
+      "Ugly code that runs beats pretty code that doesn't"
+    ],
+    "not_taught": [
+      "Options / derivatives pricing",
+      "Stochastic calculus",
+      "HFT / microstructure",
+      "Reinforcement learning for trading (v2.0)",
+      "Production infra",
+      "Anything requiring a PhD"
+    ],
+    "outcomes": [
+      "Spot look-ahead bias in someone else's code",
+      "Debunk a '90% win rate' strategy in 30 minutes",
+      "Test any idea end-to-end in under an hour",
+      "Explain every metric you use",
+      "Reconcile live PnL vs backtest PnL"
+    ]
+  },
+  "student_repo": {
+    "name": "pytrades-student",
+    "tree": [
+      "README.md",
+      "WRITEUP.md",
+      "PORTFOLIO.md",
+      "graveyard.md",
+      "Makefile",
+      "requirements.txt",
+      "config/",
+      "data/",
+      "kit/",
+      "engine/",
+      "strategies/",
+      "papers/",
+      "live/",
+      "reports/",
+      "journal/",
+      "tests/",
+      "tools/"
+    ]
+  },
+  "grading": {
+    "total": 100,
+    "artifacts": [
+      {
+        "artifact": "Strategy verdicts",
+        "weight": 30,
+        "passing_bar": "15+ strategies shipped, each with a written verdict"
+      },
+      {
+        "artifact": "Backtester quality",
+        "weight": 15,
+        "passing_bar": "Custom, unit-tested, documented in engine/README.md"
+      },
+      {
+        "artifact": "Paper replications",
+        "weight": 20,
+        "passing_bar": "2-3 replications with deviation notes"
+      },
+      {
+        "artifact": "Live paper log",
+        "weight": 20,
+        "passing_bar": "30 days of logs + reconciliation report"
+      },
+      {
+        "artifact": "Journal + graveyard",
+        "weight": 15,
+        "passing_bar": "90 daily entries, every dead strategy autopsied"
+      }
+    ],
+    "phase_retro_questions": [
+      "What pattern killed the most strategies?",
+      "Which concept made the biggest difference?",
+      "What am I still fooling myself about?"
+    ]
+  },
+  "quality_gates": {
+    "strategy_ship": [
+      "Runs on real data without errors",
+      "Includes fees + slippage",
+      "Has out-of-sample results",
+      "Has a written verdict (edge / no edge / inconclusive)",
+      "Has a graveyard entry if dead"
+    ],
+    "engine_merge": [
+      "Has a unit test",
+      "Doesn't break existing strategies",
+      "Documented in engine/README.md"
+    ],
+    "week_exit": [
+      "Weekly deliverable shipped",
+      "Graveyard updated",
+      "Journal entry written",
+      "At least one concept learned (code it, explain it in 2 sentences, spot it wrong)"
+    ]
+  },
+  "milestones": [
+    {
+      "id": "M1",
+      "week": 2,
+      "name": "Reality check",
+      "pass_condition": "Debunk a viral strategy, start to written verdict, in 30 minutes (timed and logged)."
+    },
+    {
+      "id": "M2",
+      "week": 4,
+      "name": "Backtest engine",
+      "pass_condition": "Take a fresh idea from data to tearsheet + verdict end-to-end in under 30 minutes."
+    },
+    {
+      "id": "M3",
+      "week": 6,
+      "name": "Strategy factory",
+      "pass_condition": "6 strategies tested, 3+ in the graveyard, at least 1 survivor with out-of-sample evidence."
+    },
+    {
+      "id": "M4",
+      "week": 9,
+      "name": "Paper replication",
+      "pass_condition": "2-3 papers implemented end-to-end and compared against the paper's claims with a deviation log."
+    },
+    {
+      "id": "M5",
+      "week": 12,
+      "name": "Live paper",
+      "pass_condition": "30 days of live paper logs plus a reconciliation report; live vs backtest divergence explained."
+    },
+    {
+      "id": "M6",
+      "week": 13,
+      "name": "Capstone",
+      "pass_condition": "Public writeup + portfolio + repo shipped; a stranger can clone the repo and understand everything."
+    }
+  ],
+  "phases": [
+    {
+      "id": "P1",
+      "dir": "01-foundation",
+      "name": "Foundation",
+      "weeks": [
+        1,
+        2
+      ],
+      "milestone": "M1",
+      "teacher_builds": [
+        "Repo scaffold",
+        "Data fetcher module",
+        "Metrics module",
+        "Viral-strategy debunk worksheet"
+      ],
+      "student_ships": [
+        "Working data pipeline",
+        "3 debunked viral strategies with writeups"
+      ],
+      "concepts": [
+        "C01",
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "deliverables": [
+        "D01",
+        "D02",
+        "D03",
+        "D04"
+      ]
+    },
+    {
+      "id": "P2",
+      "dir": "02-engine",
+      "name": "Engine",
+      "weeks": [
+        3,
+        4
+      ],
+      "milestone": "M2",
+      "teacher_builds": [
+        "Event-driven backtester spec",
+        "Cost models",
+        "Walk-forward splitter",
+        "Tear-sheet generator",
+        "Look-ahead bias test suite"
+      ],
+      "student_ships": [
+        "Custom backtester with fees, slippage and OOS"
+      ],
+      "concepts": [
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "deliverables": [
+        "D05",
+        "D06",
+        "D07"
+      ]
+    },
+    {
+      "id": "P3",
+      "dir": "03-strategy-factory",
+      "name": "Strategy Factory",
+      "weeks": [
+        5,
+        6
+      ],
+      "milestone": "M3",
+      "teacher_builds": [
+        "6 strategy templates",
+        "Config schema",
+        "Verdict template"
+      ],
+      "student_ships": [
+        "6 strategies, each with tearsheet + verdict + graveyard entry"
+      ],
+      "concepts": [
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15"
+      ],
+      "deliverables": [
+        "D08",
+        "D09",
+        "D10",
+        "D11"
+      ]
+    },
+    {
+      "id": "P4",
+      "dir": "04-paper-replication",
+      "name": "Paper Replication",
+      "weeks": [
+        7,
+        8,
+        9
+      ],
+      "milestone": "M4",
+      "teacher_builds": [
+        "3 paper dossiers (Time-Series Momentum, Pairs Trading, Vol-Managed Portfolios)",
+        "Math derivations",
+        "Expected-results sheets",
+        "Deviation log template"
+      ],
+      "student_ships": [
+        "2-3 replications with results-vs-claims comparison"
+      ],
+      "concepts": [
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "deliverables": [
+        "D12",
+        "D13",
+        "D14"
+      ]
+    },
+    {
+      "id": "P5",
+      "dir": "05-risk-portfolio",
+      "name": "Risk & Portfolio",
+      "weeks": [
+        10
+      ],
+      "milestone": null,
+      "teacher_builds": [
+        "Position sizing module",
+        "Correlation / portfolio combiner",
+        "Monte Carlo suite",
+        "Regime filter lab"
+      ],
+      "student_ships": [
+        "Sizing rules + portfolio allocation + sensitivity heatmaps"
+      ],
+      "concepts": [
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "deliverables": [
+        "D15"
+      ]
+    },
+    {
+      "id": "P6",
+      "dir": "06-live-paper",
+      "name": "Live Paper",
+      "weeks": [
+        11,
+        12
+      ],
+      "milestone": "M5",
+      "teacher_builds": [
+        "Alpaca / CCXT paper-trading harness",
+        "Signal generator spec",
+        "Reconciliation dashboard",
+        "Divergence post-mortem template"
+      ],
+      "student_ships": [
+        "Live bot running 30 days + reconciliation report"
+      ],
+      "concepts": [
+        "C23",
+        "C24",
+        "C25"
+      ],
+      "deliverables": [
+        "D16",
+        "D17"
+      ]
+    },
+    {
+      "id": "P7",
+      "dir": "07-synthesis",
+      "name": "Synthesis",
+      "weeks": [
+        13
+      ],
+      "milestone": "M6",
+      "teacher_builds": [
+        "Capstone rubric",
+        "Public writeup template",
+        "Portfolio doc template",
+        "Recall test"
+      ],
+      "student_ships": [
+        "Portfolio, graveyard, public writeup, roadmap"
+      ],
+      "concepts": [],
+      "deliverables": [
+        "D18"
+      ]
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "D01",
+      "week": 1,
+      "phase": "P1",
+      "milestone": "M1",
+      "title": "Data pipeline + validation report",
+      "teaches": "Raw prices are not data yet: fetch, cache, validate, then trust.",
+      "evidence": [
+        "data/*.csv",
+        "reports/data-validation.md",
+        "kit/data_fetcher.py"
+      ]
+    },
+    {
+      "id": "D02",
+      "week": 1,
+      "phase": "P1",
+      "milestone": "M1",
+      "title": "Measurement lab: first equity curves + expectancy table",
+      "teaches": "An equity curve is the only honest scoreboard; expectancy is its atom.",
+      "evidence": [
+        "reports/measurement-lab.md",
+        "reports/equity-curves/"
+      ]
+    },
+    {
+      "id": "D03",
+      "week": 2,
+      "phase": "P1",
+      "milestone": "M1",
+      "title": "Viral debunk #1 (timed, 30 minutes)",
+      "teaches": "A published win rate is a marketing number until you recompute it from prices.",
+      "evidence": [
+        "reports/debunks/debunk-01.md"
+      ]
+    },
+    {
+      "id": "D04",
+      "week": 2,
+      "phase": "P1",
+      "milestone": "M1",
+      "title": "Viral debunks #2-3 + graveyard entries",
+      "teaches": "Most 'edges' are a definition problem, a cost problem, or a sample-size problem.",
+      "evidence": [
+        "reports/debunks/debunk-02.md",
+        "reports/debunks/debunk-03.md",
+        "graveyard.md"
+      ]
+    },
+    {
+      "id": "D05",
+      "week": 3,
+      "phase": "P2",
+      "milestone": "M2",
+      "title": "Backtester v1: event loop, next-bar fills, cash, positions",
+      "teaches": "A backtest is an accounting system that happens to touch markets.",
+      "evidence": [
+        "engine/backtest.py",
+        "engine/events.py",
+        "tests/test_engine.py"
+      ]
+    },
+    {
+      "id": "D06",
+      "week": 3,
+      "phase": "P2",
+      "milestone": "M2",
+      "title": "Cost model + cost sensitivity report",
+      "teaches": "Costs are a function of turnover: what looks like an edge is often a liquidity donation.",
+      "evidence": [
+        "engine/costs.py",
+        "reports/cost-sensitivity.md"
+      ]
+    },
+    {
+      "id": "D07",
+      "week": 4,
+      "phase": "P2",
+      "milestone": "M2",
+      "title": "Walk-forward/OOS runner + tearsheets + look-ahead suite green",
+      "teaches": "Out-of-sample is a process, not a number you compute once.",
+      "evidence": [
+        "engine/walkforward.py",
+        "engine/README.md",
+        "tests/test_lookahead.py",
+        "strategies/S01_ma_cross/tearsheet.md"
+      ]
+    },
+    {
+      "id": "D08",
+      "week": 5,
+      "phase": "P3",
+      "milestone": "M3",
+      "title": "Strategies S01-S03: MA cross, RSI reversion, Bollinger",
+      "teaches": "Signal families fail in family-specific ways; naming the family predicts the autopsy.",
+      "evidence": [
+        "strategies/S01_ma_cross/verdict.md",
+        "strategies/S02_rsi_reversion/verdict.md",
+        "strategies/S03_bollinger/verdict.md"
+      ]
+    },
+    {
+      "id": "D09",
+      "week": 5,
+      "phase": "P3",
+      "milestone": "M3",
+      "title": "Strategy registry + graveyard v1",
+      "teaches": "A registry turns 'I tested a bunch of stuff' into a track record.",
+      "evidence": [
+        "strategies/index.md",
+        "graveyard.md"
+      ]
+    },
+    {
+      "id": "D10",
+      "week": 6,
+      "phase": "P3",
+      "milestone": "M3",
+      "title": "Strategies S04-S06: Donchian, momentum, pairs + bootstrap CIs",
+      "teaches": "Every backtest number is a sample from a distribution you have not seen.",
+      "evidence": [
+        "strategies/S04_donchian/verdict.md",
+        "strategies/S05_momentum/verdict.md",
+        "strategies/S06_pairs/verdict.md",
+        "reports/bootstrap.md"
+      ]
+    },
+    {
+      "id": "D11",
+      "week": 6,
+      "phase": "P3",
+      "milestone": "M3",
+      "title": "Overfitting audit + parameter sensitivity heatmaps",
+      "teaches": "If the edge only exists at one parameter value, the edge is in your search, not the market.",
+      "evidence": [
+        "reports/overfitting-audit.md",
+        "reports/sensitivity/*.csv"
+      ]
+    },
+    {
+      "id": "D12",
+      "week": 7,
+      "phase": "P4",
+      "milestone": "M4",
+      "title": "Replication R1: Time-Series Momentum",
+      "teaches": "Reading a paper is an implementation task; the paper's numbers are an input, not an answer.",
+      "evidence": [
+        "papers/R1_tsmom/impl.py",
+        "papers/R1_tsmom/comparison.md",
+        "papers/R1_tsmom/deviations.md"
+      ]
+    },
+    {
+      "id": "D13",
+      "week": 8,
+      "phase": "P4",
+      "milestone": "M4",
+      "title": "Replication R2: Pairs Trading",
+      "teaches": "Cointegration is a relationship between two series, not a property of either one.",
+      "evidence": [
+        "papers/R2_pairs/impl.py",
+        "papers/R2_pairs/comparison.md",
+        "papers/R2_pairs/deviations.md"
+      ]
+    },
+    {
+      "id": "D14",
+      "week": 9,
+      "phase": "P4",
+      "milestone": "M4",
+      "title": "Replication R3: Vol-Managed Portfolios + cross-paper synthesis",
+      "teaches": "Replication fidelity is a spectrum; the deviation IS the result.",
+      "evidence": [
+        "papers/R3_volmanaged/impl.py",
+        "papers/R3_volmanaged/comparison.md",
+        "papers/synthesis.md"
+      ]
+    },
+    {
+      "id": "D15",
+      "week": 10,
+      "phase": "P5",
+      "milestone": "M5",
+      "title": "Risk policy: sizing rules + portfolio allocation + Monte Carlo + regime lab",
+      "teaches": "Signals decide what to trade; sizing decides whether you survive to trade it.",
+      "evidence": [
+        "reports/risk-policy.md",
+        "reports/portfolio-allocation.md",
+        "reports/monte-carlo.md",
+        "reports/regime-lab.md"
+      ]
+    },
+    {
+      "id": "D16",
+      "week": 11,
+      "phase": "P6",
+      "milestone": "M5",
+      "title": "Live harness running: broker adapter, daily signal job, dashboard",
+      "teaches": "A live bot is a boring scheduling problem wearing a finance costume.",
+      "evidence": [
+        "live/bot.py",
+        "live/config.json",
+        "live/log/",
+        "live/dashboard.html"
+      ]
+    },
+    {
+      "id": "D17",
+      "week": 12,
+      "phase": "P6",
+      "milestone": "M5",
+      "title": "30-day live log + reconciliation report + divergence post-mortem",
+      "teaches": "Live PnL diverges from backtest PnL in explainable, budgetable ways.",
+      "evidence": [
+        "live/equity.csv",
+        "live/reconciliation.md",
+        "live/postmortem.md"
+      ]
+    },
+    {
+      "id": "D18",
+      "week": 13,
+      "phase": "P7",
+      "milestone": "M6",
+      "title": "Capstone: public repo + writeup + portfolio doc + roadmap",
+      "teaches": "Research you cannot explain to a stranger is research you do not understand.",
+      "evidence": [
+        "README.md",
+        "WRITEUP.md",
+        "PORTFOLIO.md",
+        "graveyard.md"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "C01",
+      "name": "Returns & Compounding",
+      "tier": 1,
+      "phase": "P1",
+      "week": 1,
+      "trigger": "Your first equity curve looks like a straight line going up - until you compute what a 50% loss does to it.",
+      "file": "phases/01-foundation/concepts/C01-returns-and-compounding.md",
+      "deliverable": "D02"
+    },
+    {
+      "id": "C02",
+      "name": "Expectancy & Profit Factor",
+      "tier": 1,
+      "phase": "P1",
+      "week": 1,
+      "trigger": "You cannot say whether a strategy is good; you can only say it made money.",
+      "file": "phases/01-foundation/concepts/C02-expectancy-and-profit-factor.md",
+      "deliverable": "D02"
+    },
+    {
+      "id": "C03",
+      "name": "Win Rate vs Edge",
+      "tier": 1,
+      "phase": "P1",
+      "week": 2,
+      "trigger": "The '90% win rate' strategy you are debunking has a 90% win rate - and still loses.",
+      "file": "phases/01-foundation/concepts/C03-win-rate-vs-edge.md",
+      "deliverable": "D03"
+    },
+    {
+      "id": "C04",
+      "name": "Sample Size & Base Rates",
+      "tier": 1,
+      "phase": "P1",
+      "week": 2,
+      "trigger": "Debunk #2 has 11 trades and you want to call it an edge (or a fraud) either way.",
+      "file": "phases/01-foundation/concepts/C04-sample-size-and-base-rates.md",
+      "deliverable": "D04"
+    },
+    {
+      "id": "C05",
+      "name": "Annualization",
+      "tier": 2,
+      "phase": "P2",
+      "week": 3,
+      "trigger": "Your engine prints daily numbers and every sane comparison is annual.",
+      "file": "phases/02-engine/concepts/C05-annualization.md",
+      "deliverable": "D05"
+    },
+    {
+      "id": "C06",
+      "name": "Volatility & Standard Deviation",
+      "tier": 2,
+      "phase": "P2",
+      "week": 3,
+      "trigger": "You want to compare a 1.2%/day strategy to a 0.4%/day strategy and know if that is a lot.",
+      "file": "phases/02-engine/concepts/C06-volatility-and-std-dev.md",
+      "deliverable": "D05"
+    },
+    {
+      "id": "C07",
+      "name": "Sharpe Ratio",
+      "tier": 2,
+      "phase": "P2",
+      "week": 3,
+      "trigger": "Two equity curves end at the same place and you cannot tell which one was luckier.",
+      "file": "phases/02-engine/concepts/C07-sharpe-ratio.md",
+      "deliverable": "D05"
+    },
+    {
+      "id": "C08",
+      "name": "Max Drawdown & Recovery",
+      "tier": 2,
+      "phase": "P2",
+      "week": 4,
+      "trigger": "Your first engine tearsheet prints a 47% drawdown and you nearly delete the strategy.",
+      "file": "phases/02-engine/concepts/C08-max-drawdown-and-recovery.md",
+      "deliverable": "D07"
+    },
+    {
+      "id": "C09",
+      "name": "Calmar & Return-vs-Pain",
+      "tier": 2,
+      "phase": "P2",
+      "week": 4,
+      "trigger": "Two strategies with similar returns, radically different drawdowns: Sharpe says tie.",
+      "file": "phases/02-engine/concepts/C09-calmar-and-return-vs-pain.md",
+      "deliverable": "D07"
+    },
+    {
+      "id": "C10",
+      "name": "Transaction Costs & Slippage",
+      "tier": 2,
+      "phase": "P2",
+      "week": 4,
+      "trigger": "Your strategy is beautiful with zero costs and dead at 10 bps round-trip.",
+      "file": "phases/02-engine/concepts/C10-transaction-costs-and-slippage.md",
+      "deliverable": "D06"
+    },
+    {
+      "id": "C11",
+      "name": "Sortino & Downside Deviation",
+      "tier": 2,
+      "phase": "P3",
+      "week": 5,
+      "trigger": "Strategy A has a better Sharpe, Strategy B never hurt you: both have the same upside.",
+      "file": "phases/03-strategy-factory/concepts/C11-sortino-and-downside-deviation.md",
+      "deliverable": "D08"
+    },
+    {
+      "id": "C12",
+      "name": "Bootstrap & Confidence Intervals",
+      "tier": 3,
+      "phase": "P3",
+      "week": 5,
+      "trigger": "Your best strategy's Sharpe is 1.4, your worst is 1.1, and you are about to rank them.",
+      "file": "phases/03-strategy-factory/concepts/C12-bootstrap-and-confidence-intervals.md",
+      "deliverable": "D10"
+    },
+    {
+      "id": "C13",
+      "name": "Parameter Sensitivity & Plateaus",
+      "tier": 3,
+      "phase": "P3",
+      "week": 5,
+      "trigger": "You found (14, 3.5) and every neighbouring value loses money.",
+      "file": "phases/03-strategy-factory/concepts/C13-parameter-sensitivity-and-plateaus.md",
+      "deliverable": "D11"
+    },
+    {
+      "id": "C14",
+      "name": "t-test Intuition",
+      "tier": 3,
+      "phase": "P3",
+      "week": 6,
+      "trigger": "You need a decision rule for 'is this mean return distinguishable from zero'.",
+      "file": "phases/03-strategy-factory/concepts/C14-t-test-intuition.md",
+      "deliverable": "D10"
+    },
+    {
+      "id": "C15",
+      "name": "Overfitting & Walk-Forward Honesty",
+      "tier": 3,
+      "phase": "P3",
+      "week": 6,
+      "trigger": "Your in-sample Sharpe is 2.1 and your out-of-sample Sharpe is -0.2.",
+      "file": "phases/03-strategy-factory/concepts/C15-overfitting-and-walkforward.md",
+      "deliverable": "D11"
+    },
+    {
+      "id": "C16",
+      "name": "Time-Series vs Cross-Sectional",
+      "tier": 3,
+      "phase": "P4",
+      "week": 7,
+      "trigger": "The TSMOM paper's returns come from a mechanism your single-instrument backtests cannot express.",
+      "file": "phases/04-paper-replication/concepts/C16-time-series-vs-cross-sectional.md",
+      "deliverable": "D12"
+    },
+    {
+      "id": "C17",
+      "name": "Volatility Targeting",
+      "tier": 3,
+      "phase": "P4",
+      "week": 7,
+      "trigger": "Same signal, wildly different risk across regimes; fixed size makes your Sharpe regime-dependent.",
+      "file": "phases/04-paper-replication/concepts/C17-volatility-targeting.md",
+      "deliverable": "D12"
+    },
+    {
+      "id": "C18",
+      "name": "Cointegration & Spreads",
+      "tier": 3,
+      "phase": "P4",
+      "week": 8,
+      "trigger": "Two assets drift apart forever and your 'mean reversion' trade becomes a trend trade - against you.",
+      "file": "phases/04-paper-replication/concepts/C18-cointegration-and-spreads.md",
+      "deliverable": "D13"
+    },
+    {
+      "id": "C19",
+      "name": "Replication Deviations: Statistical vs Economic Significance",
+      "tier": 3,
+      "phase": "P4",
+      "week": 9,
+      "trigger": "Your replication of the paper returns 60% of the paper's Sharpe and you must decide if it replicated.",
+      "file": "phases/04-paper-replication/concepts/C19-replication-deviations.md",
+      "deliverable": "D14"
+    },
+    {
+      "id": "C20",
+      "name": "Correlation & Portfolio Variance",
+      "tier": 4,
+      "phase": "P5",
+      "week": 10,
+      "trigger": "Two strategies with Sharpe 1.4 and 1.2 combine into something worse than either.",
+      "file": "phases/05-risk-portfolio/concepts/C20-correlation-and-portfolio-variance.md",
+      "deliverable": "D15"
+    },
+    {
+      "id": "C21",
+      "name": "Kelly & Fractional Kelly",
+      "tier": 4,
+      "phase": "P5",
+      "week": 10,
+      "trigger": "You have an edge and no idea what fraction of your capital it deserves.",
+      "file": "phases/05-risk-portfolio/concepts/C21-kelly-and-fractional-kelly.md",
+      "deliverable": "D15"
+    },
+    {
+      "id": "C22",
+      "name": "Risk of Ruin",
+      "tier": 4,
+      "phase": "P5",
+      "week": 10,
+      "trigger": "Your optimal-f sizing has a 30% chance of halving the account before it compounds.",
+      "file": "phases/05-risk-portfolio/concepts/C22-risk-of-ruin.md",
+      "deliverable": "D15"
+    },
+    {
+      "id": "C23",
+      "name": "Slippage Modeling & Latency",
+      "tier": 5,
+      "phase": "P6",
+      "week": 11,
+      "trigger": "Live fills are systematically worse than the close your backtest assumed.",
+      "file": "phases/06-live-paper/concepts/C23-slippage-modeling-and-latency.md",
+      "deliverable": "D16"
+    },
+    {
+      "id": "C24",
+      "name": "Live vs Backtest Divergence",
+      "tier": 5,
+      "phase": "P6",
+      "week": 12,
+      "trigger": "Live PnL is 40% below backtest PnL and you cannot tell which component ate it.",
+      "file": "phases/06-live-paper/concepts/C24-live-vs-backtest-divergence.md",
+      "deliverable": "D17"
+    },
+    {
+      "id": "C25",
+      "name": "Regime Detection",
+      "tier": 5,
+      "phase": "P6",
+      "week": 12,
+      "trigger": "Your whole live divergence is one volatile month, not a bug.",
+      "file": "phases/06-live-paper/concepts/C25-regime-detection.md",
+      "deliverable": "D17"
+    }
+  ],
+  "weeks": [
+    {
+      "n": 1,
+      "phase": "P1",
+      "title": "Raw Prices Are Not Data",
+      "objective": "Turn a downloaded CSV into a validated dataset and a measured equity curve you can defend.",
+      "deliverables": [
+        "D01",
+        "D02"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C01",
+        "C02"
+      ],
+      "time_hours": "12-16",
+      "checkpoint": "`make data && make validate` runs clean from a fresh clone; reports/measurement-lab.md contains an equity curve and an expectancy table computed from validated data.",
+      "graveyard_prompt": "Add to the graveyard. Log the first death: the naive 'always long' and 'random entry' baselines. Cause of death is usually 'no edge, no thesis' - write it down anyway, because baseline autopsies are what future you compares against."
+    },
+    {
+      "n": 2,
+      "phase": "P1",
+      "title": "Kill Three Viral Strategies",
+      "objective": "Recompute three published 'profitable strategy' claims from raw prices and write a verdict for each.",
+      "deliverables": [
+        "D03",
+        "D04"
+      ],
+      "milestone": "M1",
+      "concepts": [
+        "C03",
+        "C04"
+      ],
+      "time_hours": "14-18",
+      "checkpoint": "Milestone M1: a timed, unassisted 30-minute debunk, start to written verdict, with the timer log kept in the report.",
+      "graveyard_prompt": "Expect all three to die. The graveyard entry matters more than the debunk: name the exact mechanism (look-ahead, cost denial, repainting indicator, survivorship, sample size)."
+    },
+    {
+      "n": 3,
+      "phase": "P2",
+      "title": "Build the Accounting Machine",
+      "objective": "Ship an event-driven backtester that converts signals into fills, cash and an equity curve without cheating.",
+      "deliverables": [
+        "D05",
+        "D06"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "time_hours": "16-20",
+      "checkpoint": "Your engine passes the 8 engine unit tests and the time-travel test (positions up to T are identical whether or not future data exists), and reproduces buy-and-hold within 1% of the raw price return on SPY.",
+      "graveyard_prompt": "Graveyard prompt: Your first engine will be wrong in a way you cannot see yet. Keep the broken version's equity curve; it is the exhibit for the concept on look-ahead you will write later."
+    },
+    {
+      "n": 4,
+      "phase": "P2",
+      "title": "Costs, OOS, Tearsheets",
+      "objective": "Add fees and slippage, split in-sample from out-of-sample, and auto-generate a tearsheet for any strategy.",
+      "deliverables": [
+        "D07"
+      ],
+      "milestone": "M2",
+      "concepts": [
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "time_hours": "16-20",
+      "checkpoint": "Milestone M2: hand yourself a fresh idea you have never tested and go from raw data to tearsheet + verdict in under 30 minutes, timed.",
+      "graveyard_prompt": "Graveyard prompt: Expect at least one strategy to die the moment costs are switched on. Record the breakeven cost (bps round-trip) at which it dies; that number is the strategy's real personality."
+    },
+    {
+      "n": 5,
+      "phase": "P3",
+      "title": "The Factory Floor",
+      "objective": "Run three signal families through the same pipeline and produce comparable, verdict-bearing artifacts.",
+      "deliverables": [
+        "D08",
+        "D09"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C11",
+        "C12",
+        "C13"
+      ],
+      "time_hours": "16-20",
+      "checkpoint": "Three strategies with tearsheets, three verdicts, a populated strategies/index.md, and at least two graveyard entries; also start the live paper clock (D0) - the 30 days must run while you work.",
+      "graveyard_prompt": "Graveyard prompt: Expect the momentum/trend family to survive parameters but die on costs, and mean reversion to do the opposite. Log both mechanisms separately."
+    },
+    {
+      "n": 6,
+      "phase": "P3",
+      "title": "Six Strategies and an Honest Mirror",
+      "objective": "Test three more strategy families, then attack your own best result with bootstrap, t-test and parameter perturbation.",
+      "deliverables": [
+        "D10",
+        "D11"
+      ],
+      "milestone": "M3",
+      "concepts": [
+        "C14",
+        "C15"
+      ],
+      "time_hours": "18-22",
+      "checkpoint": "Milestone M3: 6 strategies tested, 3+ in the graveyard, at least one survivor whose OOS Sharpe sits inside a bootstrap CI that excludes zero.",
+      "graveyard_prompt": "The parameter heatmap is a graveyard map: log every parameter neighbourhood where the edge evaporated and name the shape (single spike vs plateau)."
+    },
+    {
+      "n": 7,
+      "phase": "P4",
+      "title": "Replicate a Paper: Time-Series Momentum",
+      "objective": "Implement the TSMOM result on your own data and compare your numbers to the paper's claims.",
+      "deliverables": [
+        "D12"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C16",
+        "C17"
+      ],
+      "time_hours": "18-22",
+      "checkpoint": "papers/R1_tsmom/comparison.md shows your Sharpe and the paper's Sharpe side by side, with every gap traced to a named deviation (universe, period, vol scaling, costs).",
+      "graveyard_prompt": "Graveyard prompt: Replications die too. If TSMOM fails on your universe/period, that is a finding: log it with the deviation that explains it."
+    },
+    {
+      "n": 8,
+      "phase": "P4",
+      "title": "Replicate a Paper: Pairs Trading",
+      "objective": "Build a cointegration-based pairs strategy, with a test for the relationship instead of a hope.",
+      "deliverables": [
+        "D13"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C18"
+      ],
+      "time_hours": "18-22",
+      "checkpoint": "papers/R2_pairs/comparison.md includes the cointegration test output, the chosen pair(s), spread z-score rules, and a walk-forward run where the pair was selected only on training data.",
+      "graveyard_prompt": "Graveyard prompt: Half your candidate pairs will fail the cointegration test in the OOS window. Log the failures as evidence that selection-on-full-sample is a look-ahead machine."
+    },
+    {
+      "n": 9,
+      "phase": "P4",
+      "title": "Replicate a Paper: Vol-Managed Portfolios",
+      "objective": "Implement volatility targeting on a multi-asset portfolio and reconcile three replications against their papers.",
+      "deliverables": [
+        "D14"
+      ],
+      "milestone": "M4",
+      "concepts": [
+        "C19"
+      ],
+      "time_hours": "16-20",
+      "checkpoint": "Milestone M4: 2-3 replications shipped, each with comparison.md + deviations.md, plus papers/synthesis.md answering 'what replicated, what did not, and why'.",
+      "graveyard_prompt": "Graveyard prompt: If the paper's Sharpe does not survive your costs and period, the paper is not wrong - you were not trading the paper's asset. Log the gap, not a verdict on the authors."
+    },
+    {
+      "n": 10,
+      "phase": "P5",
+      "title": "Sizing, Correlation, Survival",
+      "objective": "Turn a pile of signals into a sized, correlated, survival-aware portfolio with a written risk policy.",
+      "deliverables": [
+        "D15"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "time_hours": "16-20",
+      "checkpoint": "reports/risk-policy.md states sizing rules in one page; the portfolio allocation beats equal-weight on the same signals, and Monte Carlo shows your ruin probability under your own rules.",
+      "graveyard_prompt": "Graveyard prompt: Log the sizing rules that died: full Kelly on a fat-tailed strategy, correlation-blind diversification, vol target set so high that stops become structure."
+    },
+    {
+      "n": 11,
+      "phase": "P6",
+      "title": "Go Live (Paper)",
+      "objective": "Ship a scheduled paper-trading bot that trades your risk policy, not your mood.",
+      "deliverables": [
+        "D16"
+      ],
+      "milestone": null,
+      "concepts": [
+        "C23"
+      ],
+      "time_hours": "14-18",
+      "checkpoint": "The bot runs unattended for 7 consecutive days: signals generated, orders submitted or explicitly skipped, every day logged, dashboard rebuilt - and it has been running longer than that because you started the clock in Week 5.",
+      "graveyard_prompt": "Graveyard prompt: Log every operational death: missed bar, stale data, broker timeout, double order, timezone bug. Ops bugs are strategies' leading cause of death."
+    },
+    {
+      "n": 12,
+      "phase": "P6",
+      "title": "Reconcile Reality",
+      "objective": "Explain every basis point of gap between your live paper PnL and your backtest's promise.",
+      "deliverables": [
+        "D17"
+      ],
+      "milestone": "M5",
+      "concepts": [
+        "C24",
+        "C25"
+      ],
+      "time_hours": "14-18",
+      "checkpoint": "Milestone M5: 30+ days of live logs, a reconciliation report that attributes divergence to fees/slippage/timing/missed fills/regime, and a written expected-divergence budget for next month.",
+      "graveyard_prompt": "Graveyard prompt: Any live rule you silently changed mid-run gets logged as a killed variant. Undisclosed mid-course edits are the most common way students cheat themselves."
+    },
+    {
+      "n": 13,
+      "phase": "P7",
+      "title": "Ship It in Public",
+      "objective": "Publish the portfolio, the graveyard and the writeup so a stranger can clone, run and understand the whole thing.",
+      "deliverables": [
+        "D18"
+      ],
+      "milestone": "M6",
+      "concepts": [],
+      "time_hours": "14-20",
+      "checkpoint": "Milestone M6: the stranger-clone test - a fresh clone plus a documented 15 minutes gets someone from README.md to a reproduced tearsheet; recall test passed (explain 3 concepts from memory, code 1 from scratch).",
+      "graveyard_prompt": "Close the graveyard with a taxonomy: cluster all deaths into 3-5 causes and rank them. That ranked list is the most valuable artifact you built this quarter."
+    }
+  ],
+  "gates": {
+    "1": {
+      "checks": [
+        {
+          "id": "G1.1",
+          "type": "files_min",
+          "glob": "data/*.csv",
+          "min": 5,
+          "desc": "5+ instruments cached as CSVs"
+        },
+        {
+          "id": "G1.2",
+          "type": "file_exists",
+          "path": "reports/data-validation.md",
+          "desc": "Data validation report"
+        },
+        {
+          "id": "G1.3",
+          "type": "file_exists",
+          "path": "reports/measurement-lab.md",
+          "desc": "Measurement lab report with equity curve + expectancy table"
+        },
+        {
+          "id": "G1.4",
+          "type": "pattern_in_file",
+          "path": "reports/measurement-lab.md",
+          "pattern": "expectancy",
+          "min_matches": 1,
+          "desc": "Expectancy computed, not just described"
+        },
+        {
+          "id": "G1.5",
+          "type": "journal_min",
+          "min": 5,
+          "week": 1,
+          "desc": "Journal entries for week 1"
+        },
+        {
+          "id": "G1.6",
+          "type": "command",
+          "cmd": "python tools/check_gate.py --week 1 --self-test",
+          "expect_exit": 0,
+          "desc": "Scaffold self-test runs"
+        },
+        {
+          "id": "G1.7",
+          "type": "manual",
+          "desc": "You can explain compounding and expectancy in 2 sentences each and spot the wrong version in kit/spot_it_wrong.py"
+        }
+      ]
+    },
+    "2": {
+      "checks": [
+        {
+          "id": "G2.1",
+          "type": "files_min",
+          "glob": "reports/debunks/debunk-*.md",
+          "min": 3,
+          "desc": "3 debunk writeups"
+        },
+        {
+          "id": "G2.2",
+          "type": "pattern_in_file",
+          "path": "reports/debunks/debunk-01.md",
+          "pattern": "elapsed|minutes|timer",
+          "min_matches": 1,
+          "desc": "Debunk #1 is timed"
+        },
+        {
+          "id": "G2.3",
+          "type": "file_contains_section",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 3,
+          "desc": "3+ graveyard entries"
+        },
+        {
+          "id": "G2.4",
+          "type": "journal_min",
+          "min": 5,
+          "week": 2,
+          "desc": "Journal entries for week 2"
+        },
+        {
+          "id": "G2.5",
+          "type": "manual",
+          "desc": "M1: you have demonstrably debunked a fresh viral claim in 30 timed minutes"
+        }
+      ]
+    },
+    "3": {
+      "checks": [
+        {
+          "id": "G3.1",
+          "type": "file_exists",
+          "path": "engine/backtest.py",
+          "desc": "Your backtester exists"
+        },
+        {
+          "id": "G3.2",
+          "type": "command",
+          "cmd": "python -m pytest tests -q",
+          "expect_exit": 0,
+          "desc": "All engine unit tests pass"
+        },
+        {
+          "id": "G3.3",
+          "type": "file_exists",
+          "path": "reports/cost-sensitivity.md",
+          "desc": "Cost sensitivity report"
+        },
+        {
+          "id": "G3.4",
+          "type": "file_exists",
+          "path": "engine/costs.py",
+          "desc": "Cost model wired into the engine"
+        },
+        {
+          "id": "G3.5",
+          "type": "file_exists",
+          "path": "engine/README.md",
+          "desc": "Engine documented"
+        },
+        {
+          "id": "G3.6",
+          "type": "journal_min",
+          "min": 5,
+          "week": 3,
+          "desc": "Journal entries for week 3"
+        },
+        {
+          "id": "G3.7",
+          "type": "manual",
+          "desc": "Buy-and-hold reproduction within 1% and the time-travel test passes"
+        }
+      ]
+    },
+    "4": {
+      "checks": [
+        {
+          "id": "G4.1",
+          "type": "file_exists",
+          "path": "engine/walkforward.py",
+          "desc": "Walk-forward / OOS runner"
+        },
+        {
+          "id": "G4.2",
+          "type": "file_exists",
+          "path": "tests/test_lookahead.py",
+          "desc": "Look-ahead test suite in place"
+        },
+        {
+          "id": "G4.3",
+          "type": "command",
+          "cmd": "python -m pytest tests -q",
+          "expect_exit": 0,
+          "desc": "Engine + look-ahead tests green"
+        },
+        {
+          "id": "G4.4",
+          "type": "files_min",
+          "glob": "strategies/*/tearsheet.md",
+          "min": 3,
+          "desc": "Tearsheets for 3 strategies"
+        },
+        {
+          "id": "G4.5",
+          "type": "pattern_in_file",
+          "path": "engine/README.md",
+          "pattern": "out-of-sample|OOS|walk-forward",
+          "min_matches": 1,
+          "desc": "OOS documented"
+        },
+        {
+          "id": "G4.6",
+          "type": "journal_min",
+          "min": 5,
+          "week": 4,
+          "desc": "Journal entries for week 4"
+        },
+        {
+          "id": "G4.7",
+          "type": "manual",
+          "desc": "M2: timed end-to-end run of a fresh idea in under 30 minutes"
+        }
+      ]
+    },
+    "5": {
+      "checks": [
+        {
+          "id": "G5.1",
+          "type": "files_min",
+          "glob": "strategies/S0[123]_*/verdict.md",
+          "min": 3,
+          "desc": "3 verdicts"
+        },
+        {
+          "id": "G5.2",
+          "type": "file_exists",
+          "path": "strategies/index.md",
+          "desc": "Strategy registry"
+        },
+        {
+          "id": "G5.3",
+          "type": "file_contains_section",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 2,
+          "desc": "2+ graveyard entries"
+        },
+        {
+          "id": "G5.4",
+          "type": "file_exists",
+          "path": "live/config.json",
+          "desc": "Live paper clock started (config committed in Week 5, run in Week 11-12)"
+        },
+        {
+          "id": "G5.5",
+          "type": "journal_min",
+          "min": 5,
+          "week": 5,
+          "desc": "Journal entries for week 5"
+        },
+        {
+          "id": "G5.6",
+          "type": "manual",
+          "desc": "Each verdict names the mechanism of death or survival in one sentence"
+        }
+      ]
+    },
+    "6": {
+      "checks": [
+        {
+          "id": "G6.1",
+          "type": "files_min",
+          "glob": "strategies/*/verdict.md",
+          "min": 6,
+          "desc": "6 strategy verdicts"
+        },
+        {
+          "id": "G6.2",
+          "type": "file_contains_section",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 3,
+          "desc": "3+ graveyard entries"
+        },
+        {
+          "id": "G6.3",
+          "type": "file_exists",
+          "path": "reports/overfitting-audit.md",
+          "desc": "Overfitting audit"
+        },
+        {
+          "id": "G6.4",
+          "type": "files_min",
+          "glob": "reports/sensitivity/*.csv",
+          "min": 2,
+          "desc": "Sensitivity heatmap data"
+        },
+        {
+          "id": "G6.5",
+          "type": "pattern_in_file",
+          "path": "reports/bootstrap.md",
+          "pattern": "confidence|CI|percentile",
+          "min_matches": 1,
+          "desc": "Bootstrap CI computed"
+        },
+        {
+          "id": "G6.6",
+          "type": "journal_min",
+          "min": 5,
+          "week": 6,
+          "desc": "Journal entries for week 6"
+        },
+        {
+          "id": "G6.7",
+          "type": "manual",
+          "desc": "M3: at least one survivor whose OOS bootstrap CI excludes zero"
+        }
+      ]
+    },
+    "7": {
+      "checks": [
+        {
+          "id": "G7.1",
+          "type": "file_exists",
+          "path": "papers/R1_tsmom/impl.py",
+          "desc": "TSMOM implementation"
+        },
+        {
+          "id": "G7.2",
+          "type": "file_exists",
+          "path": "papers/R1_tsmom/comparison.md",
+          "desc": "Results-vs-claims comparison"
+        },
+        {
+          "id": "G7.3",
+          "type": "file_exists",
+          "path": "papers/R1_tsmom/deviations.md",
+          "desc": "Deviation log"
+        },
+        {
+          "id": "G7.4",
+          "type": "journal_min",
+          "min": 5,
+          "week": 7,
+          "desc": "Journal entries for week 7"
+        },
+        {
+          "id": "G7.5",
+          "type": "manual",
+          "desc": "Every gap to the paper is traced to a named deviation"
+        }
+      ]
+    },
+    "8": {
+      "checks": [
+        {
+          "id": "G8.1",
+          "type": "file_exists",
+          "path": "papers/R2_pairs/impl.py",
+          "desc": "Pairs implementation"
+        },
+        {
+          "id": "G8.2",
+          "type": "pattern_in_file",
+          "path": "papers/R2_pairs/comparison.md",
+          "pattern": "coint|ADF|half-life|z-score",
+          "min_matches": 1,
+          "desc": "Cointegration evidence in the writeup"
+        },
+        {
+          "id": "G8.3",
+          "type": "file_exists",
+          "path": "papers/R2_pairs/deviations.md",
+          "desc": "Deviation log"
+        },
+        {
+          "id": "G8.4",
+          "type": "journal_min",
+          "min": 5,
+          "week": 8,
+          "desc": "Journal entries for week 8"
+        },
+        {
+          "id": "G8.5",
+          "type": "manual",
+          "desc": "Pair selection happened on training data only"
+        }
+      ]
+    },
+    "9": {
+      "checks": [
+        {
+          "id": "G9.1",
+          "type": "file_exists",
+          "path": "papers/R3_volmanaged/impl.py",
+          "desc": "Vol-managed implementation"
+        },
+        {
+          "id": "G9.2",
+          "type": "files_min",
+          "glob": "papers/R*/comparison.md",
+          "min": 3,
+          "desc": "3 replications compared"
+        },
+        {
+          "id": "G9.3",
+          "type": "file_exists",
+          "path": "papers/synthesis.md",
+          "desc": "Cross-paper synthesis"
+        },
+        {
+          "id": "G9.4",
+          "type": "journal_min",
+          "min": 5,
+          "week": 9,
+          "desc": "Journal entries for week 9"
+        },
+        {
+          "id": "G9.5",
+          "type": "retro",
+          "phase": "P4",
+          "desc": "Phase 4 retro written (3 questions) - see shared/retro-template.md"
+        },
+        {
+          "id": "G9.6",
+          "type": "manual",
+          "desc": "M4 passed"
+        }
+      ]
+    },
+    "10": {
+      "checks": [
+        {
+          "id": "G10.1",
+          "type": "file_exists",
+          "path": "reports/risk-policy.md",
+          "desc": "Written risk policy"
+        },
+        {
+          "id": "G10.2",
+          "type": "file_exists",
+          "path": "reports/portfolio-allocation.md",
+          "desc": "Portfolio allocation"
+        },
+        {
+          "id": "G10.3",
+          "type": "file_exists",
+          "path": "reports/monte-carlo.md",
+          "desc": "Monte Carlo survival analysis"
+        },
+        {
+          "id": "G10.4",
+          "type": "file_exists",
+          "path": "reports/regime-lab.md",
+          "desc": "Regime filter lab"
+        },
+        {
+          "id": "G10.5",
+          "type": "files_min",
+          "glob": "reports/sensitivity/*.csv",
+          "min": 3,
+          "desc": "Sizing sensitivity data"
+        },
+        {
+          "id": "G10.6",
+          "type": "journal_min",
+          "min": 5,
+          "week": 10,
+          "desc": "Journal entries for week 10"
+        },
+        {
+          "id": "G10.7",
+          "type": "manual",
+          "desc": "Ruin probability under your own rules is computed, not assumed"
+        }
+      ]
+    },
+    "11": {
+      "checks": [
+        {
+          "id": "G11.1",
+          "type": "file_exists",
+          "path": "live/bot.py",
+          "desc": "Live bot"
+        },
+        {
+          "id": "G11.2",
+          "type": "files_min",
+          "glob": "live/log/*.json",
+          "min": 7,
+          "desc": "7+ consecutive daily logs"
+        },
+        {
+          "id": "G11.3",
+          "type": "file_exists",
+          "path": "live/dashboard.html",
+          "desc": "Reconciliation dashboard"
+        },
+        {
+          "id": "G11.4",
+          "type": "journal_min",
+          "min": 5,
+          "week": 11,
+          "desc": "Journal entries for week 11"
+        },
+        {
+          "id": "G11.5",
+          "type": "manual",
+          "desc": "The bot ran unattended: no manual order edits in the log window"
+        }
+      ]
+    },
+    "12": {
+      "checks": [
+        {
+          "id": "G12.1",
+          "type": "csv_rows_min",
+          "path": "live/equity.csv",
+          "min": 30,
+          "desc": "30+ days of live equity"
+        },
+        {
+          "id": "G12.2",
+          "type": "file_exists",
+          "path": "live/reconciliation.md",
+          "desc": "Reconciliation report"
+        },
+        {
+          "id": "G12.3",
+          "type": "pattern_in_file",
+          "path": "live/reconciliation.md",
+          "pattern": "slippage|fees|timing|missed",
+          "min_matches": 2,
+          "desc": "Divergence attributed to named components"
+        },
+        {
+          "id": "G12.4",
+          "type": "file_exists",
+          "path": "live/postmortem.md",
+          "desc": "Divergence post-mortem"
+        },
+        {
+          "id": "G12.5",
+          "type": "journal_min",
+          "min": 5,
+          "week": 12,
+          "desc": "Journal entries for week 12"
+        },
+        {
+          "id": "G12.6",
+          "type": "manual",
+          "desc": "M5 passed"
+        }
+      ]
+    },
+    "13": {
+      "checks": [
+        {
+          "id": "G13.1",
+          "type": "files_min",
+          "glob": "strategies/*/verdict.md",
+          "min": 15,
+          "desc": "15+ tested strategies with verdicts"
+        },
+        {
+          "id": "G13.2",
+          "type": "file_exists",
+          "path": "WRITEUP.md",
+          "desc": "Public writeup"
+        },
+        {
+          "id": "G13.3",
+          "type": "pattern_in_file",
+          "path": "WRITEUP.md",
+          "pattern": "http",
+          "min_matches": 1,
+          "desc": "Writeup is published (links to the public artifact)"
+        },
+        {
+          "id": "G13.4",
+          "type": "file_exists",
+          "path": "PORTFOLIO.md",
+          "desc": "Portfolio document"
+        },
+        {
+          "id": "G13.5",
+          "type": "file_contains_section",
+          "path": "graveyard.md",
+          "section": "## ",
+          "min_sections": 5,
+          "desc": "Graveyard taxonomy with 5+ entries"
+        },
+        {
+          "id": "G13.6",
+          "type": "journal_min",
+          "min": 80,
+          "week": 0,
+          "desc": "80+ journal entries across the course"
+        },
+        {
+          "id": "G13.7",
+          "type": "manual",
+          "desc": "Stranger-clone test passed + recall test (3 concepts explained, 1 coded from scratch)"
+        }
+      ]
+    }
+  },
+  "paper_dossiers": [
+    {
+      "id": "R1",
+      "name": "Time-Series Momentum",
+      "ref": "Moskowitz, Ooi & Pedersen (2012), 'Time Series Momentum', JFE 104(2).",
+      "file": "phases/04-paper-replication/dossiers/R1-time-series-momentum.md",
+      "repo_path": "papers/R1_tsmom",
+      "core_claim": "Past 12-month excess return predicts the next 1-month return, for nearly every futures market, and vol-scaling makes the effect stable across regimes."
+    },
+    {
+      "id": "R2",
+      "name": "Pairs Trading",
+      "ref": "Gatev, Goetzmann & Rouwenhorst (2006), 'Pairs Trading: Performance of a Relative-Value Arbitrage Rule', RFS 19(3).",
+      "file": "phases/04-paper-replication/dossiers/R2-pairs-trading.md",
+      "repo_path": "papers/R2_pairs",
+      "core_claim": "Form pairs on normalised historical prices, trade divergence from the spread, and the spread reverts often enough to pay for costs."
+    },
+    {
+      "id": "R3",
+      "name": "Vol-Managed Portfolios",
+      "ref": "Moreira & Muir (2017), 'Volatility-Managed Portfolios', Journal of Finance 72(4); Harvey et al. (2018) for the replication critique.",
+      "file": "phases/04-paper-replication/dossiers/R3-vol-managed-portfolios.md",
+      "repo_path": "papers/R3_volmanaged",
+      "core_claim": "Scaling exposure inversely to recent realised volatility raises risk-adjusted returns, because vol clusters and returns do not scale with it."
+    }
+  ],
+  "live_paper": {
+    "mandatory": true,
+    "clock_start_week": 5,
+    "graded_window_days": 30,
+    "brokers": [
+      "alpaca",
+      "ccxt",
+      "sim"
+    ],
+    "note": "The 30-day clock is started in Week 5 precisely because it takes 30 real days. Weeks 11-12 are for engineering the harness, reconciling and writing the post-mortem - not for starting the clock."
+  }
+}

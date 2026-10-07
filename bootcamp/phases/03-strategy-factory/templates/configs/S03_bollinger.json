@@ -1,0 +1,11 @@
+{
+  "id": "S03_bollinger",
+  "name": "Bollinger z-score reversion on SPY",
+  "universe": ["SPY"],
+  "params": {"window": 20, "entry_z": -2.0, "exit_z": 0.0, "allow_short": false},
+  "thesis": "Deviations from a short-window mean in index ETFs are mostly liquidity events and revert toward the mean.",
+  "tags": ["reversion", "tier2"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "daily"
+}

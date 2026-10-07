@@ -1,0 +1,11 @@
+{
+  "id": "S05_momentum",
+  "name": "Cross-sectional momentum 12-1, top 3 of ETF set",
+  "universe": ["SPY", "QQQ", "IWM", "TLT", "IEF", "GLD", "EEM", "EFA", "DBC", "UUP"],
+  "params": {"lookback": 252, "skip": 21, "top_n": 3},
+  "thesis": "Assets that outperformed over the past year keep outperforming for the next month, because information and flows diffuse slowly.",
+  "tags": ["momentum", "cross-sectional", "tier3"],
+  "long_only": true,
+  "max_gross_exposure": 1.0,
+  "rebalance": "monthly"
+}
