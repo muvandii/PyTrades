@@ -50,8 +50,9 @@ Every video cell has a plain clickable fallback link with timestamps.
 | Day | Notebook | Status |
 |---|---|---|
 | 01 | Environment & first market data | ✅ Available now |
-| 02–13 | See [COURSE_MAP.md](COURSE_MAP.md) | Generated in batches as you complete each day, adapted to your results |
+| 02 | Working with data: read/write, segregate | ✅ Available now |
+| 03–13 | See [COURSE_MAP.md](COURSE_MAP.md) | Generated in batches as you complete each day, adapted to your results. Total: **13 learning days (≤ 2 weeks)** |
 
-**When you finish Day 01**, bring back: your Section G score, your answers in
-Sections H–I, and any error you could not explain. Day 02 will be adapted to that —
-that is the programme working as designed.
+**When you finish a day**, bring back: your Section G score, your answers in
+Sections H–I, and any error you could not explain. The next day is adapted to that —
+that is the programme working as designed. Day 02 assumes Day 01's checklist is green.
