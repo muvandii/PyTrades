@@ -49,9 +49,16 @@ Every video cell has a plain clickable fallback link with timestamps.
 
 | Day | Notebook | Status |
 |---|---|---|
-| 01 | Environment & first market data | ✅ Available now |
-| 02–13 | See [COURSE_MAP.md](COURSE_MAP.md) | Generated in batches as you complete each day, adapted to your results |
+| 01 | Environment & first market data | ✅ |
+| 02 | Working with data: read/write, segregate | ✅ |
+| 03 | Visualisation, normalisation, creating data | ✅ |
+| 04 | Resampling & first risk numbers (🏁 Milestone 1) | ✅ |
+| 05 | Loops, correlation, covariance — Challenge 1 | ✅ |
+| 06 | Returns & moving averages — Challenge 2 | ✅ |
+| 07 | Alignment, cumulative returns, drawdowns (🏁 Milestone 2) | ✅ **← Week 1 complete** |
+| 08–13 | Backtesting → functions → classes → APIs → capstone | 📐 Fully specified in [WEEK2_AUTHORING_GUIDE.md](WEEK2_AUTHORING_GUIDE.md); authored in 3 batches as you progress. **Total: 13 learning days (≤ 2 weeks)** |
 
-**When you finish Day 01**, bring back: your Section G score, your answers in
-Sections H–I, and any error you could not explain. Day 02 will be adapted to that —
-that is the programme working as designed.
+**When you finish a day**, bring back: your Section G score, your answers in
+Sections H–I, and any error you could not explain — or say **"produce the next"**
+to have Day 08 (the first backtest) authored. Each day assumes the previous
+checklists are green; milestone gates are in `projects/`.
