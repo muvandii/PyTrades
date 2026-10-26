@@ -8,6 +8,6 @@ ipython>=8
 ipykernel>=6
 jupyter>=1
 pytest>=8
-# Introduced later in the course (listed now so setup happens once):
-# seaborn  -> Day 05 heatmaps (optional until then)
-# requests -> Day 12 APIs (already pulled in by yfinance)
+seaborn>=0.13  # Day 05 heatmaps (notebook has a matplotlib fallback; this matches the video)
+# Day 12 APIs use `requests` (already pulled in by yfinance); lessons run on mocked
+# payloads — no API key is required at any point for assessed work.

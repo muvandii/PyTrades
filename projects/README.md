@@ -7,6 +7,7 @@
 | P2 Backtester | 08–12 | SMA-crossover backtest → functions → importable `pytrades/` package → API adapter |
 | Capstone | 13 | A strategy **not in the video**, on an **unseen ticker**, with costs and a bias/limitations report |
 
-Day 01's mini-project (**P0.1 — Reproducible market-data intake report**) is fully
-specified inside `notebooks/Day_01_Environment_and_First_Market_Data.ipynb`, Section F.
-Milestone specs land here as you reach Days 4, 7 and 9.
+Each day's mini-project is fully specified in its notebook, Section F.
+Milestone gates: [MILESTONE_1.md](MILESTONE_1.md) (Day 04) ·
+[MILESTONE_2.md](MILESTONE_2.md) (Day 07). Milestone 3 (Day 09) and the
+capstone spec are defined in [`../WEEK2_AUTHORING_GUIDE.md`](../WEEK2_AUTHORING_GUIDE.md).
