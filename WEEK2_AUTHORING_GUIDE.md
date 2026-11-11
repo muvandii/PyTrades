@@ -1,9 +1,9 @@
 # Week 2 Authoring Guide — Days 08–13 (do not lower the Week-1 standard)
 
-> **Status:** Week 1 (Days 01–07) is fully authored and verified. Week 2 is **specified
-> here in full but not yet authored**, because compressing 11 complete notebooks into
-> one batch would degrade exercises, tests and reference-validation. Author Week 2
-> in the three batches named below. Total programme: **13 learning days ≤ 2 weeks**.
+> **Status:** Week 1 (Days 01–07) **and** Week 2 (Days 08–13) are **fully authored and
+> reference-validated** across Batches W2-A (Days 08–09 + `long_spy_like.csv` +
+> `MILESTONE_3.md`), W2-B (Days 10–11 + `PACKAGE_SPEC.md`), and W2-C (Days 12–13 +
+> `CAPSTONE.md`). Total programme: **13 learning days ≤ 2 weeks**.
 >
 > Source remains the single video + its official chapters:
 > https://www.youtube.com/watch?v=GDMkkmkJigw (see `COURSE_MAP.md`).

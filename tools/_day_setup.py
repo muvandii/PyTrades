@@ -52,3 +52,33 @@ df = (pd.read_csv(demo_path, parse_dates=["Date"], index_col="Date")
 close_panel = multi.loc[:, "Close"].copy()
 print("multi:", multi.shape, "| close_panel:", close_panel.shape, "| df:", df.shape)
 '''
+
+WEEK2_SETUP_CODE = SETUP_CODE.rstrip() + r'''
+
+def _long(seed=808, start_price=180.0, n=2520):
+    """Synthetic ~10-year (2,520 business days) index-like OHLCV history for Week 2."""
+    rng = np.random.default_rng(seed)
+    dates = pd.bdate_range("2015-01-02", periods=n, freq="B")
+    regimes = [(680, 0.00050, 0.0080), (250, -0.00025, 0.0115), (110, -0.00220, 0.0220),
+               (560, 0.00095, 0.0105), (320, -0.00085, 0.0140), (600, 0.00065, 0.0090)]
+    lr = (np.concatenate([rng.normal(mu, sig, k) for k, mu, sig in regimes])
+          if sum(k for k, _, _ in regimes) == n else rng.normal(0.00035, 0.011, size=n))
+    lr[0] = 0.0
+    close = start_price * np.exp(np.cumsum(lr))
+    open_ = np.empty(n); open_[0] = start_price
+    open_[1:] = close[:-1] * np.exp(rng.normal(0, 0.0018, size=n - 1))
+    intraday = np.abs(rng.normal(0, 0.0045, size=n))
+    f = pd.DataFrame({"Open": np.round(open_, 4),
+        "High": np.round(np.maximum(open_, close) * (1 + intraday), 4),
+        "Low": np.round(np.minimum(open_, close) * (1 - intraday), 4),
+        "Close": np.round(close, 4), "Adj Close": np.round(close, 4),
+        "Volume": rng.integers(2_000_000, 9_000_000, size=n)}, index=dates)
+    f.index.name = "Date"; return f
+
+long_path = _find("long_spy_like.csv")
+df_long = (pd.read_csv(long_path, parse_dates=["Date"], index_col="Date")
+           if long_path is not None else _long())
+print("df_long (SYNTHETIC ~10y):", df_long.shape,
+      f"{df_long.index.min().date()}..{df_long.index.max().date()}")
+'''
+
